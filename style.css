@@ -1,0 +1,578 @@
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@300;400;500;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 90px;
+}
+
+body {
+    background: #f1eee8;
+    color: #111111;
+    font-family: 'Inter', sans-serif;
+    overflow-x: hidden;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background-image: url("https://i.pinimg.com/736x/45/0b/ee/450bee7d7e6e4f62fa711f1a0985d808.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    filter: grayscale(100%);
+    opacity: 0.18;
+    z-index: -2;
+}
+
+body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: rgba(241, 238, 232, 0.82);
+    z-index: -1;
+}
+
+header {
+    min-height: 100vh;
+    padding: 0 50px 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    border-bottom: 1px solid #111111;
+}
+
+.opcoes {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 22px 50px;
+    background: rgba(241, 238, 232, 0.88);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(17, 17, 17, 0.25);
+    z-index: 1000;
+}
+
+.opcoes ul {
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 25px;
+}
+
+.opcoes li {
+    position: relative;
+}
+
+.opcoes a {
+    color: #111111;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: 0.3s ease;
+}
+
+.opcoes a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -7px;
+    width: 0;
+    height: 2px;
+    background: #d9482f;
+    transition: 0.3s ease;
+}
+
+.opcoes a:hover {
+    color: #d9482f;
+}
+
+.opcoes a:hover::after {
+    width: 100%;
+}
+
+.hero {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 50px;
+}
+
+.titulo {
+    font-family: 'Anton', sans-serif;
+    font-weight: 400;
+    font-size: clamp(6rem, 13vw, 13rem);
+    line-height: 0.95;
+    letter-spacing: -1px;
+    text-transform: uppercase;
+    max-width: 1100px;
+    color: transparent;
+    -webkit-text-stroke: 3px #111111;
+}
+
+.subtitulo {
+    font-size: 14px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    padding-bottom: 8px;
+    white-space: nowrap;
+}
+
+.container > section {
+    min-height: 90vh;
+    padding: 120px 50px;
+    border-bottom: 1px solid #111111;
+    scroll-margin-top: 90px;
+}
+
+h2 {
+    font-family: 'Anton', sans-serif;
+    font-weight: 400;
+    font-size: clamp(5rem, 11vw, 11rem);
+    line-height: 0.85;
+    letter-spacing: -1px;
+    text-transform: uppercase;
+    margin-bottom: 90px;
+    color: transparent;
+    -webkit-text-stroke: 4px #111111;
+}
+
+.sobre {
+    display: grid;
+    grid-template-columns: 0.7fr 1.3fr;
+    gap: 80px;
+    align-items: center;
+}
+
+.logo {
+    width: 100%;
+    max-width: 400px;
+    display: block;
+    margin: auto;
+    filter: grayscale(100%);
+    transition: 0.4s ease;
+}
+
+.logo:hover {
+    filter: grayscale(0%);
+    transform: scale(1.03);
+}
+
+.info ul {
+    list-style: none;
+}
+
+.info li {
+    font-size: clamp(1.2rem, 2vw, 1.8rem);
+    line-height: 1.5;
+    padding: 25px 0;
+    border-top: 1px solid #111111;
+}
+
+.info li:last-child {
+    border-bottom: 1px solid #111111;
+}
+
+.info b {
+    color: #d9482f;
+}
+
+#hobbies {
+    background: #111111;
+    color: #f1eee8;
+}
+
+#hobbies h2 {
+    color: transparent;
+    -webkit-text-stroke: 4px #f1eee8;
+}
+
+#hobbies ul {
+    list-style: none;
+    max-width: 1100px;
+}
+
+#hobbies li {
+    font-family: 'Anton', sans-serif;
+    font-size: clamp(2.5rem, 6vw, 6rem);
+    line-height: 1;
+    text-transform: uppercase;
+    padding: 25px 0;
+    border-bottom: 1px solid #f1eee8;
+    transition: 0.3s ease;
+}
+
+#hobbies li:hover {
+    color: #d9482f;
+    padding-left: 25px;
+}
+
+.formacoes {
+    border-top: 1px solid #111111;
+}
+
+.formacao-item {
+    display: grid;
+    grid-template-columns: 100px 1fr;
+    gap: 40px;
+    padding: 40px 0;
+    border-bottom: 1px solid #111111;
+}
+
+.numero {
+    font-size: 14px;
+    font-weight: 600;
+    color: #d9482f;
+}
+
+.formacao-item h3 {
+    font-size: clamp(1.5rem, 3vw, 3rem);
+    font-weight: 600;
+    line-height: 1.1;
+    margin-bottom: 15px;
+}
+
+.formacao-item p {
+    font-size: 15px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    border-top: 1px solid #111111;
+}
+
+.card {
+    min-height: 280px;
+    padding: 35px;
+    border-bottom: 1px solid #111111;
+    border-right: 1px solid #111111;
+    position: relative;
+    transition: 0.3s ease;
+}
+
+.card:nth-child(even) {
+    border-right: none;
+}
+
+.card:hover {
+    background: #111111;
+    color: #f1eee8;
+}
+
+.card span {
+    color: #d9482f;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.card h3 {
+    font-size: clamp(1.5rem, 3vw, 2.8rem);
+    line-height: 1;
+    margin-top: 70px;
+}
+
+.card p {
+    margin-top: 20px;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.projetos {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    border-top: 1px solid #111111;
+}
+
+.projetos a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.projeto {
+    min-height: 400px;
+    padding: 40px;
+    border-bottom: 1px solid #111111;
+    border-right: 1px solid #111111;
+    position: relative;
+    transition: 0.3s ease;
+}
+
+.projetos a:last-child .projeto {
+    border-right: none;
+}
+
+.projeto:hover {
+    background: #d9482f;
+}
+
+.projeto span {
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.projeto h3 {
+    font-family: 'Anton', sans-serif;
+    font-size: clamp(3rem, 5vw, 5rem);
+    font-weight: 400;
+    text-transform: uppercase;
+    margin-top: 100px;
+}
+
+.projeto p {
+    max-width: 450px;
+    margin-top: 20px;
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+.projeto strong {
+    position: absolute;
+    right: 40px;
+    bottom: 35px;
+    font-size: 35px;
+    font-weight: 400;
+}
+
+#contato {
+    background: #d9482f;
+}
+
+#contato h2 {
+    color: transparent;
+    -webkit-text-stroke: 4px #111111;
+}
+
+.contato {
+    max-width: 900px;
+    margin-left: auto;
+}
+
+.contato a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.insta,
+.email,
+.git {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    padding: 25px 0;
+    border-bottom: 1px solid #111111;
+    transition: 0.3s ease;
+}
+
+.insta:hover,
+.email:hover,
+.git:hover {
+    padding-left: 20px;
+}
+
+.insta img,
+.email img,
+.git img {
+    width: 45px;
+    height: 45px;
+    object-fit: contain;
+}
+
+.contato p {
+    font-size: clamp(1.2rem, 2vw, 2rem);
+    font-weight: 600;
+}
+
+.logo{
+    border-radius: 1000px;
+    background-color: white;
+}
+
+footer {
+    padding: 30px 50px;
+    display: flex;
+    justify-content: space-between;
+    background: #111111;
+    color: #f1eee8;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+@media (max-width: 900px) {
+    header {
+        padding: 0 30px 40px;
+    }
+
+    .opcoes {
+        padding: 20px 30px;
+    }
+
+    .opcoes ul {
+        justify-content: flex-start;
+        flex-wrap: wrap;
+        gap: 18px 25px;
+    }
+
+    .titulo {
+        font-size: clamp(5rem, 15vw, 9rem);
+        -webkit-text-stroke: 2px #111111;
+    }
+
+    .hero {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 30px;
+    }
+
+    .container > section {
+        padding: 80px 30px;
+    }
+
+    h2 {
+        font-size: clamp(4rem, 15vw, 8rem);
+        margin-bottom: 60px;
+        -webkit-text-stroke: 3px #111111;
+    }
+
+    #hobbies h2,
+    #contato h2 {
+        -webkit-text-stroke: 3px currentColor;
+    }
+
+    .sobre {
+        grid-template-columns: 1fr;
+        gap: 50px;
+    }
+
+    .logo {
+        max-width: 300px;
+    }
+
+    .cards,
+    .projetos {
+        grid-template-columns: 1fr;
+    }
+
+    .card,
+    .projeto {
+        border-right: none;
+    }
+}
+
+@media (max-width: 600px) {
+    header {
+        padding: 0 20px 30px;
+    }
+
+    .opcoes {
+        padding: 18px 20px;
+    }
+
+    .opcoes ul {
+        gap: 14px 18px;
+    }
+
+    .opcoes a {
+        font-size: 10px;
+    }
+
+    .titulo {
+        font-size: 19vw;
+        line-height: 0.95; 
+        letter-spacing: 0; 
+        -webkit-text-stroke: 2px #111111;
+    }
+
+    .subtitulo {
+        font-size: 11px;
+    }
+
+    .container > section {
+        padding: 70px 20px;
+        scroll-margin-top: 120px;
+    }
+
+    h2 {
+        font-size: 19vw;
+        margin-bottom: 55px;
+        -webkit-text-stroke: 2px #111111;
+    }
+
+    #hobbies h2 {
+        -webkit-text-stroke: 2px #f1eee8;
+    }
+
+    #contato h2 {
+        -webkit-text-stroke: 2px #111111;
+    }
+
+    .info li {
+        font-size: 1.1rem;
+    }
+
+    .formacao-item {
+        grid-template-columns: 40px 1fr;
+        gap: 15px;
+        padding: 30px 0;
+    }
+
+    .formacao-item h3 {
+        font-size: 1.5rem;
+    }
+
+    .card {
+        min-height: 230px;
+        padding: 25px;
+    }
+
+    .card h3 {
+        margin-top: 50px;
+        font-size: 2rem;
+    }
+
+    .projeto {
+        min-height: 330px;
+        padding: 25px;
+    }
+
+    .projeto h3 {
+        margin-top: 70px;
+        font-size: 3rem;
+    }
+
+    .projeto strong {
+        right: 25px;
+        bottom: 25px;
+    }
+
+    .contato p {
+        font-size: 1rem;
+    }
+
+    .insta,
+    .email,
+    .git {
+        gap: 15px;
+    }
+
+    footer {
+        padding: 25px 20px;
+    }
+}

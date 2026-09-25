@@ -1,0 +1,254 @@
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@300;400;500;600;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    min-height: 100vh;
+    background-image: url('https://i.pinimg.com/1200x/0e/a8/26/0ea8269be6948c6585bcc44da14e6085.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center fix;
+    background-attachment: fixed; 
+    height: 100vh;
+    color: #ffffff;
+    font-family: 'Inter', sans-serif;
+    overflow-x: hidden;
+}
+
+.cursor-glow {
+    position: fixed;
+    width: 500px;
+    height: 500px;
+    left: 0;
+    top: 0;
+    border-radius: 50%;
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+    background: radial-gradient(circle,
+            hsla(var(--hue, 0), 100%, 60%, 0.2),
+            transparent 65%);
+    filter: blur(20px);
+    z-index: 1;
+    mix-blend-mode: screen;
+}
+
+.thorfinn {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
+}
+
+.thorfinn img {
+    width: min(850px, 75vw);
+    height: 90vh;
+    object-fit: contain;
+    filter: brightness(0) invert(1);
+    opacity: 0.35;
+    transition: filter 0.2s ease;
+}
+
+main {
+    position: relative;
+    z-index: 2;
+}
+
+.projetos {
+    min-height: calc(100vh - 70px);
+    padding: 100px 7vw 80px;
+}
+
+.titulo {
+    margin-bottom: 70px;
+}
+
+.titulo span {
+    display: block;
+    margin-bottom: 10px;
+    color: #ffffff;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 4px;
+    opacity: 0.6;
+}
+
+.titulo h1 {
+    font-family: 'Anton', sans-serif;
+    font-size: clamp(4rem, 10vw, 9rem);
+    font-weight: 400;
+    line-height: 0.9;
+    text-transform: uppercase;
+    color: transparent;
+    -webkit-text-stroke: 1px #ffffff;
+}
+
+.grid-projetos {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    border-top: 1px solid rgba(255, 255, 255, 0.8);
+    border-left: 1px solid rgba(255, 255, 255, 0.8);
+}
+
+.projeto {
+    position: relative;
+    min-height: 280px;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-decoration: none;
+    color: #ffffff;
+    background: rgba(0, 0, 0, 0.25);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    border-right: 1px solid rgba(255, 255, 255, 0.8);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.8);
+    overflow: hidden;
+}
+
+.projeto::before {
+    content: "";
+    position: absolute;
+    width: 350px;
+    height: 350px;
+    left: var(--card-x, 50%);
+    top: var(--card-y, 50%);
+    transform: translate(-50%, -50%);
+    background: radial-gradient(circle,
+            hsla(var(--hue, 0), 100%, 60%, 0.28),
+            transparent 65%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    pointer-events: none;
+}
+
+.projeto:hover::before {
+    opacity: 1;
+}
+
+.projeto>* {
+    position: relative;
+    z-index: 2;
+}
+
+.projeto>span {
+    font-size: 13px;
+    font-weight: 600;
+    opacity: 0.6;
+}
+
+.projeto div {
+    max-width: 80%;
+}
+
+.projeto h2 {
+    margin-bottom: 12px;
+    font-family: 'Anton', sans-serif;
+    font-size: clamp(2.5rem, 4vw, 4.5rem);
+    font-weight: 400;
+    line-height: 0.95;
+    text-transform: uppercase;
+}
+
+.projeto p {
+    max-width: 500px;
+    font-size: 14px;
+    line-height: 1.6;
+    opacity: 0.65;
+}
+
+.projeto strong {
+    position: absolute;
+    right: 30px;
+    bottom: 25px;
+    font-size: 30px;
+    font-weight: 300;
+    transition: transform 0.3s ease;
+}
+
+.projeto:hover strong {
+    transform: translate(5px, -5px);
+}
+
+footer {
+    position: relative;
+    z-index: 2;
+    min-height: 70px;
+    padding: 25px 7vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-top: 1px solid rgba(255, 255, 255, 0.5);
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    opacity: 0.7;
+}
+
+@media (max-width: 800px) {
+    .projetos {
+        padding: 80px 5vw 60px;
+    }
+
+    .grid-projetos {
+        grid-template-columns: 1fr;
+    }
+
+    .projeto {
+        min-height: 250px;
+    }
+
+    .thorfinn img {
+        width: 100vw;
+    }
+}
+
+@media (max-width: 600px) {
+    .titulo {
+        margin-bottom: 50px;
+    }
+
+    .titulo h1 {
+        font-size: 4rem;
+    }
+
+    .projeto {
+        min-height: 230px;
+        padding: 25px;
+    }
+
+    .projeto h2 {
+        font-size: 2.5rem;
+    }
+
+    .projeto div {
+        max-width: 90%;
+    }
+
+    .projeto strong {
+        right: 20px;
+        bottom: 20px;
+    }
+
+    .cursor-glow {
+        display: none;
+    }
+}
+
+@media (pointer: coarse) {
+    .cursor-glow {
+        display: none;
+    }
+}

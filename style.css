@@ -128,7 +128,6 @@ header {
     text-transform: uppercase;
     letter-spacing: 2px;
     padding-bottom: 8px;
-    white-space: nowrap;
 }
 
 .container > section {
@@ -162,6 +161,8 @@ h2 {
     max-width: 400px;
     display: block;
     margin: auto;
+    border-radius: 1000px;
+    background-color: white;
     filter: grayscale(100%);
     transition: 0.4s ease;
 }
@@ -186,17 +187,12 @@ h2 {
     border-bottom: 1px solid #111111;
 }
 
-.info b {
-    color: #d9482f;
-}
-
 #hobbies {
     background: #111111;
     color: #f1eee8;
 }
 
 #hobbies h2 {
-    color: transparent;
     -webkit-text-stroke: 4px #f1eee8;
 }
 
@@ -294,6 +290,110 @@ h2 {
     letter-spacing: 1px;
 }
 
+.habilidades {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    border-top: 1px solid #111111;
+}
+
+.habilidade {
+    min-height: 350px;
+    padding: 35px;
+    position: relative;
+    overflow: hidden;
+    border-bottom: 1px solid #111111;
+    border-right: 1px solid #111111;
+    background: #111111;
+    color: #f1eee8;
+}
+
+.habilidade:nth-child(even) {
+    border-right: none;
+}
+
+.habilidade::before {
+    content: "";
+    position: absolute;
+    width: 350px;
+    height: 350px;
+    left: var(--mouse-x, 50%);
+    top: var(--mouse-y, 50%);
+    transform: translate(-50%, -50%);
+    background: radial-gradient(
+        circle,
+        rgba(217, 72, 47, 0.9) 0%,
+        rgba(217, 72, 47, 0.35) 25%,
+        rgba(217, 72, 47, 0.08) 50%,
+        transparent 72%
+    );
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    z-index: 0;
+}
+
+.habilidade:hover::before {
+    opacity: 1;
+}
+
+.habilidade::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(
+        circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+        rgba(255, 255, 255, 0.08),
+        transparent 35%
+    );
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+.habilidade:hover::after {
+    opacity: 1;
+}
+
+.habilidade span {
+    position: relative;
+    z-index: 2;
+    color: #d9482f;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.habilidade img {
+    position: absolute;
+    width: 170px;
+    height: 170px;
+    object-fit: contain;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    filter: grayscale(100%) brightness(0) invert(1);
+    opacity: 0.65;
+    z-index: 2;
+    transition: 0.5s ease;
+}
+
+.habilidade:hover img {
+    filter: grayscale(0%);
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1.08);
+}
+
+.habilidade h3 {
+    position: absolute;
+    left: 35px;
+    bottom: 35px;
+    z-index: 2;
+    font-family: 'Anton', sans-serif;
+    font-size: clamp(2rem, 4vw, 4rem);
+    font-weight: 400;
+    line-height: 1;
+    text-transform: uppercase;
+}
+
 .projetos {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -355,7 +455,6 @@ h2 {
 }
 
 #contato h2 {
-    color: transparent;
     -webkit-text-stroke: 4px #111111;
 }
 
@@ -369,9 +468,7 @@ h2 {
     text-decoration: none;
 }
 
-.insta,
-.email,
-.git {
+.contato-item {
     display: flex;
     align-items: center;
     gap: 30px;
@@ -380,15 +477,11 @@ h2 {
     transition: 0.3s ease;
 }
 
-.insta:hover,
-.email:hover,
-.git:hover {
+.contato-item:hover {
     padding-left: 20px;
 }
 
-.insta img,
-.email img,
-.git img {
+.contato-item img {
     width: 45px;
     height: 45px;
     object-fit: contain;
@@ -397,11 +490,6 @@ h2 {
 .contato p {
     font-size: clamp(1.2rem, 2vw, 2rem);
     font-weight: 600;
-}
-
-.logo{
-    border-radius: 1000px;
-    background-color: white;
 }
 
 footer {
@@ -435,12 +523,6 @@ footer {
         -webkit-text-stroke: 2px #111111;
     }
 
-    .hero {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 30px;
-    }
-
     .container > section {
         padding: 80px 30px;
     }
@@ -449,11 +531,6 @@ footer {
         font-size: clamp(4rem, 15vw, 8rem);
         margin-bottom: 60px;
         -webkit-text-stroke: 3px #111111;
-    }
-
-    #hobbies h2,
-    #contato h2 {
-        -webkit-text-stroke: 3px currentColor;
     }
 
     .sobre {
@@ -465,14 +542,20 @@ footer {
         max-width: 300px;
     }
 
+    .habilidades,
     .cards,
     .projetos {
         grid-template-columns: 1fr;
     }
 
+    .habilidade,
     .card,
     .projeto {
         border-right: none;
+    }
+
+    .habilidade {
+        min-height: 320px;
     }
 }
 
@@ -495,8 +578,8 @@ footer {
 
     .titulo {
         font-size: 19vw;
-        line-height: 0.95; 
-        letter-spacing: 0; 
+        line-height: 0.95;
+        letter-spacing: 0;
         -webkit-text-stroke: 2px #111111;
     }
 
@@ -547,6 +630,22 @@ footer {
         font-size: 2rem;
     }
 
+    .habilidade {
+        min-height: 280px;
+        padding: 25px;
+    }
+
+    .habilidade img {
+        width: 130px;
+        height: 130px;
+    }
+
+    .habilidade h3 {
+        left: 25px;
+        bottom: 25px;
+        font-size: 2.5rem;
+    }
+
     .projeto {
         min-height: 330px;
         padding: 25px;
@@ -566,9 +665,7 @@ footer {
         font-size: 1rem;
     }
 
-    .insta,
-    .email,
-    .git {
+    .contato-item {
         gap: 15px;
     }
 
